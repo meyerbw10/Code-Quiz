@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Home Page</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-  <div id="header">
-    <h1>Welcome To The Halo Quiz!</h1>
-  </div>
+  <div class="page">
+
+    <section class="pageHeader">
   
-  <div id="gameBox">
-    <h1 id="qs"></h1>
-    <button id="a"></button>
-    <button id="b"></button>
-    <button id="c"></button>
-    <button id="d"></button>
-  </div>
-   
+      <button>View High Scores</button>
+      <h1>Welcome To The Halo Quiz!</h1>
+      <p id="timer">00</p>
 
-  <div id="scores">
+    </section>
     
+    <section class="gameBox">
+
+      <header class="startPage">
+          <button class="startGame">Start</button>
+      </header>
+
+      <main id="qs">
+
+        <button id="a"></button>
+        <button id="b"></button>
+        <button id="c"></button>
+        <button id="d"></button>
+        
+      </main>
+    </section>
+
+    <footer>
+      <p>&copy;2022 Game by Brad</p>
+    </footer>
   </div>
-
-
-
-
   <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
