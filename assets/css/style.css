@@ -23,11 +23,19 @@ button {
   outline: none;
 }
 
+button a {
+  text-decoration: none;
+  color: yellow;
+}
+
 p {
   color:yellow;
   font-size: larger;
 }
 
+#questionDisplay {
+  color: black;
+}
 
 /*--------------*/
 /* Page Section */
@@ -49,6 +57,7 @@ p {
   color: yellow;
   display: flex;
   justify-content: space-between;
+  flex-flow: row nowrap;
 }
 
 .pageHeader h1 {
@@ -108,3 +117,8 @@ footer {
 /*---------------------------*/
 
 
+#initials {
+  width: 85%;
+  height: 65px;
+  font-size: 22pt;
+}

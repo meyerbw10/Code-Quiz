@@ -1,25 +1,21 @@
 
-
 // OVERALL: I want a page that has a solo start button (Event listener) and when it is clicked it starts the quiz. I want to have a question (Variable) that is displayed on screen. i want to have the choices(Variable) displayed with the question and timer(Variable?) that is ticking down 1 per second. i want to have a funtion that takes my questions and links them up with a pool of answers. when clicking on the wrong answer, the timer goes down 5 seconds. and when the right answer is clicked the next question and choices are displayed (Another function). I need to store the answers and tag them with a score. and then when the quiz is complete or the timer reaches 0 i need a page to display that shows a score and allows input for name (local storage?) and takes that information and displays it on a board (list displayed 1-5) and a play again button.
 
-var gameBox = document.getElementById('gameBox')
+var gameBox = document.querySelector('.gameBox')
 var qs = document.getElementById('qs') // this is how our question ties to HTML
 var timerElement = document.getElementById('timer')
-var startPage = document.getElementById('startPage')
-var startGame = document.getElementById('startGame')
-var scores = []
+var startPage = document.querySelector('.startPage')
+var startGame = document.querySelector(".startGame")
+var currentQuestion = 0;
+var currentScore = 0;
 
-var timer;
-var timerCount;
-
-// boxes/choices
+var questionDisplay = document.getElementById('questionDisplay')
 var a = document.getElementById('a')
 var b = document.getElementById('b')
 var c = document.getElementById('c')
 var d = document.getElementById('d')
 
 
-// Our string of questions & answers
 var questions = [ 
   { // 0
     questions: "Who is the Captain of The Pillar of Autumn in Halo: CE?",
@@ -54,72 +50,106 @@ var questions = [
 ]
 
 
-
-// ^^^^ function that when start button is hit then it runs the quiz?
-
-
-// create a function that goes into our arrray and displays questions and choices based off of our questions array
-
 function quiz() {
-  // timer setInterval(60 seconds i--)
-  qs.textContent = questions[0].questions;
+  questionDisplay.textContent = questions[currentQuestion].questions;
 
-  a.textContent = questions[0].choices[0];
-  b.textContent = questions[0].choices[1];
-  c.textContent = questions[0].choices[2];
-  d.textContent = questions[0].choices[3];
+  a.textContent = questions[currentQuestion].choices[0];
+  b.textContent = questions[currentQuestion].choices[1];
+  c.textContent = questions[currentQuestion].choices[2];
+  d.textContent = questions[currentQuestion].choices[3];
 
 }
-// onces interval is set up then subtract time
+
 function checkAnswer(event) {
-  if(event.target.textContent === questions[0].answer) {
+  // Answer was correct
+  if(event.target.textContent === questions[currentQuestion].answer) {
+    currentScore += 15;
     nextQuestion()
+    // if your answer was wrong
   } else {
-    quiz()
-    // subtract time and run question again
+    currentScore -= 5;
+    nextQuestion()
   }
   
 }
 // make sure my answer boxes choices dont link up to the same box
 function nextQuestion() {
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion = currentQuestion + 1
+    quiz()
 
-  qs.textContent = questions[1].questions
-
-
-  a.textContent = questions[1].choices[0];
-  b.textContent = questions[1].choices[1];
-  c.textContent = questions[1].choices[2];
-  d.textContent = questions[1].choices[3];
-}
-
-function checkAnswer(event) {
-  if(event.target.textContent === questions[1].answer) {
-    nextQuestion()
+  } else {
+    quizEnd()
   }
+} 
 
+function quizEnd() {
+  qs.innerHTML = 
+    `
+    <p id="questionDisplay">Your Score was: ${currentScore} </p>
+    <input id="initials"/> 
+    <button id="saveScore"><a href="./highscores.html">Submit</a></button>
+    `
+    var saveScore = document.getElementById('saveScore')
 
-
-
+    saveScore.addEventListener('click', saveLocal)
 }
-quiz()
-// detect if the clicked button is the correct answer or not. then move on to the next question.
+
+function saveLocal() {
+  // taking what the user types
+  var initials = document.getElementById("initials").value
+  // setting the users input and score to a variable OBJECT
+  var userobj = {name: initials, finalScore: currentScore}
+
+  // attempting to grab the value of high score from local storage 
+  var hs = localStorage.getItem('highScores')
+  // checking does it exist
+  if (hs == undefined) {
+    // if it doesnt exist, set the value to be an empty array
+    localStorage.setItem('highScores', JSON.stringify([]))
+    hs = localStorage.getItem('highScores')
+  } 
+  // retrieving the original value
+  var hsArray = JSON.parse(hs)
+  // pushing the pushing the initials and current score (saved data) to the array
+  hsArray.push(userobj)
+  // saves changes back to local storage 
+  localStorage.setItem('highScores', JSON.stringify(hsArray) )
+}
 
 
 
-if (questions.textContent === questions[0].answer) {
-  nextQuestion();
-// }
+var timeRemaining = 40;
 
-// nextQuestion.addEventListener("clicl")
+function timerCountDown() {
+  timerElement.textContent = timeRemaining
+  countdown = setInterval(function(){
+    // time to decrease starting at 40 seconds.
+    if (timeRemaining > 0) {
+      timeRemaining--
+    } else {
+      quizEnd()
+      clearInterval(countdown)
+    }
+    // update timer on screen
+    timerElement.textContent = timeRemaining
+    // at zero, end the quiz 
+  }, 1000) 
+}
+
+startGame.addEventListener('click', function(){
+  quiz();
+  timerCountDown();
+  startGame.remove()
+})
 
 a.addEventListener('click', checkAnswer)
 b.addEventListener('click', checkAnswer)
 c.addEventListener('click', checkAnswer)
 d.addEventListener('click', checkAnswer)
-}
 
-// local storage with classmates / need to store information locally 
-// how to store mulitple var fullInput/ objects is important to code quiz
+
+
 
 
 
