@@ -28,14 +28,18 @@ button a {
   color: yellow;
 }
 
+
 p {
-  color:yellow;
+  color: rgb(65, 226, 65);
   font-size: larger;
 }
 
 #questionDisplay {
   color: black;
 }
+
+
+
 
 /*--------------*/
 /* Page Section */
@@ -103,7 +107,6 @@ footer {
   display: flex;
   justify-content: center;
 }
-
 
 
 

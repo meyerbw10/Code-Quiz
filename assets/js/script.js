@@ -67,7 +67,7 @@ function checkAnswer(event) {
     nextQuestion()
     // if your answer was wrong
   } else {
-    currentScore -= 5;
+    timeRemaining -= 5;
     nextQuestion()
   }
   
