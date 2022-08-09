@@ -151,28 +151,6 @@ d.addEventListener('click', checkAnswer)
 
 
 
-
-
-
-
-// ACEPTENCE CRITIREA
-
-// GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and my score
-
-
-// ------- ----------
-
-
 // COMMENTS ON QUIZ
 
 // Landing page
@@ -199,19 +177,3 @@ d.addEventListener('click', checkAnswer)
 // Game ends when all questions are answered OR the timer reaches 0 -- is there a case where the timer might go lower than 0 that needs to be accounted for?
 
 
-
-
-// function startTimer () {
-//   timer = setInterval(function() {
-//     timerCount--;
-//     timerElement.textContent = timerCount;
-//     if (timerCount >= 0) {
-//       if (isWin && timerCount > 0) {
-//         clearInterval(timer);
-//       }
-//     }
-//     if (timerCount === 0) {
-//       clearInterval(timer);
-//     }
-//   }, 1000);
-// }

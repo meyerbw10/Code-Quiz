@@ -1,6 +1,5 @@
 # Code-Quiz
 
----
 
 ## Table of Contents 
 
@@ -17,7 +16,7 @@
 
 ## Project Description 
 
-For my 4th challenge its time to work on a Code Quiz! My projects are on display via Github, with clickable images as well as my resume in a clickable PDF file. 
+For my 4th challenge its time to work on a Code Quiz! Some main focuses in the project included mulitple functions. Making a working Timer and a high scores page thats tied togeather is the real challenge. My projects are on display via Github, with clickable images as well as my resume in a clickable PDF file. 
 
 ---
 
@@ -31,7 +30,13 @@ Link to deployed website: https://github.com/meyerbw10/Password-Generator
 
 ### Usage
 
-(pictures)
+
+
+![](./assets/images/pic1.png)
+
+![](./assets/images/pic2.png)
+
+![](./assets/images/pic3.png)
 
 ---
 
@@ -39,7 +44,7 @@ Link to deployed website: https://github.com/meyerbw10/Password-Generator
 
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+SO THAT I can gauge my progress in skill level since starting the bootcamp
 
 ---
 
@@ -65,7 +70,8 @@ THEN I can save my initials and my score
 
 - adding html, css, js and read me files
 - updating Readme
-
+- adding high scores html and js pages
+- final touches
 
 ---
 
